@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" style="background-color:#F4F4F6;">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#A32638">
+<title>7 Brew — $500 in Savings</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --maroon: #A32638;
+    --maroon-dark: #8A1B2F;
+    --ink: #1F1F24;
+    --muted: #6F6F78;
+    --line: #E6E6EA;
+  }
+  html { background: #F4F4F6 !important; color-scheme: light only; -webkit-text-size-adjust: 100%; }
+  body {
+    background: linear-gradient(180deg, #F8F8F9 0%, #EEEEF1 100%) !important;
+    color: var(--ink) !important;
+    font-family: 'Inter', sans-serif;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+  .page {
+    width: 100%; max-width: 420px; margin: 0 auto;
+    padding: calc(18px + env(safe-area-inset-top)) 14px calc(26px + env(safe-area-inset-bottom));
+  }
+
+  /* CARDS */
+  .card {
+    position: relative; overflow: hidden;
+    background: #fff !important; border-radius: 26px;
+    box-shadow: 0 10px 30px rgba(20,20,40,0.08), 0 1px 3px rgba(20,20,40,0.05);
+    margin-bottom: 14px;
+  }
+
+  /* HERO CARD */
+  .hero { padding: 22px 16px 18px; }
+  .hero::before {
+    content: ''; position: absolute; top: -70px; right: -70px;
+    width: 210px; height: 210px; border-radius: 50%;
+    background: rgba(163,38,59,0.045);
+  }
+  .logo { display: block; width: 78px; height: 78px; margin: 0 auto 14px; position: relative; filter: drop-shadow(0 6px 10px rgba(0,0,0,0.15)); }
+  .lead {
+    position: relative; text-align: center; font-size: 15.5px; line-height: 1.4;
+    color: #3A3A42 !important; font-weight: 500;
+    padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--line);
+  }
+  .lead strong { display: block; color: var(--maroon) !important; font-weight: 800; font-size: 17px; margin-top: 2px; }
+
+  /* STEPS TABLE */
+  .steps { border: 1px solid var(--line); border-radius: 14px; overflow: hidden; margin-bottom: 16px; position: relative; background: #fff !important; }
+  .steps-head { background: #F4F4F5 !important; padding: 12px 14px; font-weight: 800; font-size: 14.5px; color: var(--ink) !important; }
+  .row { display: grid; grid-template-columns: 30px 1fr; gap: 6px; padding: 12px 14px; border-top: 1px solid #ECECEF; font-size: 14.5px; line-height: 1.4; color: var(--ink) !important; font-weight: 500; }
+  .row b { color: var(--maroon) !important; font-weight: 800; }
+
+  /* CTA */
+  .cta {
+    position: relative; overflow: hidden; display: block; width: 100%;
+    text-align: center; text-decoration: none;
+    padding: 16px 14px; border-radius: 999px;
+    background: linear-gradient(180deg, #B52C44 0%, #8A1B2F 100%) !important;
+    color: #fff !important; font-weight: 900; font-size: 15px; letter-spacing: 0.14em; text-transform: uppercase;
+    box-shadow: 0 12px 24px rgba(163,38,59,0.30);
+    -webkit-tap-highlight-color: transparent; transition: transform .1s ease;
+  }
+  .cta:active { transform: scale(0.985); }
+  .cta::after {
+    content: ''; position: absolute; top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,0.28), transparent);
+    transform: skewX(-18deg); animation: shine 3.6s ease-in-out infinite;
+  }
+  @keyframes shine { 0%, 55% { left: -60%; } 100% { left: 130%; } }
+
+  /* RATING CARD */
+  .rating { padding: 20px 16px; text-align: center; }
+  .boxes { display: flex; justify-content: center; gap: 5px; margin-bottom: 12px; }
+  .boxes span { width: 34px; height: 34px; border-radius: 7px; background: var(--maroon) !important; color: #fff !important; font-size: 19px; display: flex; align-items: center; justify-content: center; }
+  .score { font-size: 24px; font-weight: 900; color: var(--ink) !important; }
+  .count { margin-top: 3px; font-size: 14px; color: var(--muted) !important; font-weight: 500; }
+
+  /* FAQ */
+  .faq-title { padding: 16px 18px; font-size: 11.5px; font-weight: 900; letter-spacing: 0.22em; color: var(--maroon) !important; border-bottom: 1px solid var(--line); }
+  .faq-item { border-bottom: 1px solid #EEEEF1; }
+  .faq-item:last-child { border-bottom: none; }
+  .faq-q {
+    width: 100%; background: #fff !important; border: none; text-align: left; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 17px 18px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; color: var(--ink) !important;
+  }
+  .plus { position: relative; flex: 0 0 auto; width: 16px; height: 16px; }
+  .plus::before, .plus::after { content: ''; position: absolute; background: #8C8C95; border-radius: 1px; transition: transform .25s ease; }
+  .plus::before { left: 0; right: 0; top: 7px; height: 1.6px; }
+  .plus::after { top: 0; bottom: 0; left: 7px; width: 1.6px; }
+  .faq-item.open .plus::after { transform: scaleY(0); }
+  .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; padding: 0 18px; font-size: 13.5px; line-height: 1.65; color: var(--muted) !important; }
+  .faq-item.open .faq-a { max-height: 220px; padding-bottom: 16px; }
+
+  /* FOOTER */
+  .foot { text-align: center; padding: 18px 10px 4px; }
+  .foot-brand { display: inline-flex; align-items: center; gap: 9px; font-weight: 800; font-size: 15px; color: var(--ink) !important; margin-bottom: 10px; }
+  .foot-brand svg { width: 28px; height: 28px; }
+  .foot p { font-size: 12px; line-height: 1.6; color: #8A8A93 !important; margin-top: 6px; }
+
+  @media (prefers-color-scheme: dark) {
+    html, body { background: #F4F4F6 !important; color: var(--ink) !important; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HERO CARD -->
+  <section class="card hero">
+    <svg class="logo" viewBox="0 0 100 100" aria-label="7B">
+      <circle cx="50" cy="50" r="48" fill="#111"/>
+      <circle cx="50" cy="50" r="37" fill="#fff"/>
+      <circle cx="50" cy="50" r="37" fill="none" stroke="#A32638" stroke-width="2"/>
+      <text x="50" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-style="italic" font-weight="900" font-size="38" fill="#A32638">7B</text>
+    </svg>
+
+    <p class="lead">Complete the steps below to claim your <strong>$500 in 7 Brew savings</strong></p>
+
+    <div class="steps">
+      <div class="steps-head">Steps to Qualify</div>
+      <div class="row"><b>1.</b><span>Click on “Claim Now”</span></div>
+      <div class="row"><b>2.</b><span>Enter your email and basic information</span></div>
+      <div class="row"><b>3.</b><span>Complete 4–5 sponsored deals (required)</span></div>
+      <div class="row"><b>4.</b><span>Claim your $500 in 7 Brew savings</span></div>
+    </div>
+
+    <a class="cta" href="https://linkthem.net/aff_c?offer_id=4512&aff_id=197957" target="_blank" rel="noopener">Claim Now</a>
+  </section>
+
+  <!-- RATING CARD -->
+  <section class="card rating">
+    <div class="boxes"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+    <div class="score">4.9 out of 5</div>
+    <div class="count">Based on 2,369 reviews</div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="card">
+    <div class="faq-title">FREQUENTLY ASKED QUESTIONS</div>
+
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">Who is this offer for?<span class="plus"></span></button>
+      <div class="faq-a">This offer is for eligible adults who enjoy 7 Brew and want to earn a reward by completing sponsored offers. Availability depends on your location and the promotion partner’s requirements.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How much can I save?<span class="plus"></span></button>
+      <div class="faq-a">Eligible participants who complete all required steps can receive $500 in 7 Brew savings. Reward subject to eligibility and offer terms.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">What are sponsored deals?<span class="plus"></span></button>
+      <div class="faq-a">Sponsored deals are offers from our partners, such as app downloads, sign-ups and trials. You choose from the deals shown and complete the required ones.</div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)" aria-expanded="false">How many deals do I need to complete?<span class="plus"></span></button>
+      <div class="faq-a">You need to complete 4–5 sponsored deals to qualify. Completing all required offers gives you the chance to receive the reward.</div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="foot">
+    <div class="foot-brand">
+      <svg viewBox="0 0 100 100" aria-hidden="true">
+        <circle cx="50" cy="50" r="48" fill="#111"/><circle cx="50" cy="50" r="37" fill="#fff"/>
+        <text x="50" y="62" text-anchor="middle" font-family="Inter, sans-serif" font-style="italic" font-weight="900" font-size="38" fill="#A32638">7B</text>
+      </svg>
+      7B Reward
+    </div>
+    <p>© 2026 7B Reward. All rights reserved.</p>
+    <p>Offer availability and eligibility are subject to the promotion partner’s requirements and terms. Review all details before participating.</p>
+  </footer>
+
+</div>
+
+<script>
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const open = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!open) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
+  }
+</script>
+</body>
+</html>
